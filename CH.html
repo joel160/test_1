@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            width: 360px;
+            background: #dfe0e1;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(90deg, #497cc8, #1912de);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section i {
+            font-size: 28px;
+            color: #007bff;
+        }
+
+        .section p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .history-detail {
+            margin-top: 16px;
+        }
+
+        .history-detail h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .history-detail p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Collection History</div>
+        <div class="section">
+            <i class="fas fa-history"></i>
+            <p>Last Emptying: 2 hours ago</p>
+        </div>
+        <div class="history-detail">
+            <h2>Collection Details</h2>
+            <p>The bin was last emptied 2 hours ago. The collection history for the past week shows that the bin has been emptied regularly, with no overflows reported. The system ensures timely notifications when the bin is close to being full, allowing for prompt emptying and avoiding any potential issues.</p>
+        </div>
+        <a class="back-button" href="index.html">Back to Dashboard</a>
+    </div>
+</body>
+</html>

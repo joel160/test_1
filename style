@@ -1,0 +1,229 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 360px;
+    background: #dfe0e1;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(90deg, #497cc8, #1711cf);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120%;
+    height: 120%;
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(-10deg);
+    z-index: 0;
+}
+
+.title .title-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.title .title-text i {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #1c1c1c;
+    margin-top: 8px;
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-single {
+    grid-column: span 2;
+}
+
+.section {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.section:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gauge {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(#007bff 0% 50%, #e0e0e0 50%);
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gauge .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+}
+
+.battery {
+    font-size: 36px;
+    color: #ffc107;
+}
+
+.battery-level {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.detail i, .status-container i, .history-container i {
+    font-size: 28px;
+    color: #007bff;
+}
+
+.detail p, .status-container p, .history-container p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.timestamp {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.close {
+    color: #007bff;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 360px) {
+    .container {
+        width: 320px;
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 24px;
+        padding: 12px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .gauge, .battery-container, .details-container, .status-container, .history-container {
+        padding: 12px;
+    }
+
+    .gauge .percentage {
+        font-size: 20px;
+    }
+
+    .battery-level {
+        font-size: 16px;
+    }
+
+    .detail i, .status-container i, .history-container i {
+        font-size: 24px;
+    }
+
+    .detail p, .status-container p, .history-container p {
+        font-size: 16px;
+    }
+}

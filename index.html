@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dustbin Monitor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+    font-family: 'Roboto', sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    width: 360px;
+    background: #dfe0e1;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(90deg, #497cc8, #1711cf);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120%;
+    height: 120%;
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(-10deg);
+    z-index: 0;
+}
+
+.title .title-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.title .title-text i {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #1c1c1c;
+    margin-top: 8px;
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-single {
+    grid-column: span 2;
+}
+
+.section {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.section:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gauge {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(#007bff 0% 50%, #e0e0e0 50%);
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gauge .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+}
+
+.battery {
+    font-size: 36px;
+    color: #ffc107;
+}
+
+.battery-level {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.detail i, .status-container i, .history-container i {
+    font-size: 28px;
+    color: #007bff;
+}
+
+.detail p, .status-container p, .history-container p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.timestamp {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.close {
+    color: #007bff;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 360px) {
+    .container {
+        width: 320px;
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 24px;
+        padding: 12px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .gauge, .battery-container, .details-container, .status-container, .history-container {
+        padding: 12px;
+    }
+
+    .gauge .percentage {
+        font-size: 20px;
+    }
+
+    .battery-level {
+        font-size: 16px;
+    }
+
+    .detail i, .status-container i, .history-container i {
+        font-size: 24px;
+    }
+
+    .detail p, .status-container p, .history-container p {
+        font-size: 16px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <div class="title-text">
+                <i class="fas fa-trash-alt"></i>
+                <span>Smart Bin</span>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="section gauge-container" id="gaugeContainer">
+                <div class="gauge">
+                    <div class="percentage">50%</div>
+                </div>
+                <p>Waste Level</p>
+            </div>
+
+            <div class="section battery-container" id="batteryContainer">
+                <i class="fas fa-battery-half battery"></i>
+                <p class="battery-level">Battery: 50%</p>
+            </div>
+
+            <a class="section details-container grid-single" href="details.html">
+                <div class="detail">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Project Details</p>
+                </div>
+            </a>
+
+            <a class="section status-container grid-single" href="SS.html">
+                <i class="fas fa-sync-alt"></i>
+                <p>System Status</p>
+            </a>
+
+            <a class="section history-container grid-single" href="CH.html">
+                <i class="fas fa-history"></i>
+                <p>Collection History</p>
+            </a>
+        </div>
+
+        <div class="timestamp">
+            Last emptied: 2 hours ago
+        </div>
+    </div>
+
+    <!-- Modal for Pop-ups -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalText"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Function to open the modal with specific content
+        function openModal(content) {
+            document.getElementById("modalText").innerHTML = content;
+            modal.style.display = "flex";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Handle clicks on specific containers
+        document.getElementById("gaugeContainer").onclick = function() {
+            openModal(`
+                <h2>Waste Level Information</h2>
+                <p>The current waste level is at 50%. This is measured using an ultrasonic sensor. The sensor detects the distance from the top of the bin to the waste, calculating the fill level as a percentage.</p>`);
+        }
+
+        document.getElementById("batteryContainer").onclick = function() {
+            openModal(`
+                <h2>Battery Status</h2>
+                <p>The battery level is currently at 50%. Regular monitoring ensures that the system remains powered, and alerts are provided when battery levels are low.</p>`);
+        }
+    </script>
+</body>
+</html>
